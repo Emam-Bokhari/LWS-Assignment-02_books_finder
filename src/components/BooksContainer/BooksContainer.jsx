@@ -1,11 +1,22 @@
-import { Fragment } from "react";
-import Searchbox from "./Searchbox";
-import SortBooks from "./SortBooks";
+import { Fragment, useState } from "react";
+import AddBooksModal from ".././AddBooksModal.jsx";
+import BooksAction from "./BooksAction.jsx";
+import BooksList from "./BooksList";
+import Searchbox from "./Searchbox.jsx";
+import SortBooks from "./SortBooks.jsx";
 
-export default function Header() {
+export default function BooksContainer() {
+
+    const [showAddBookModal, setShowAddBookModal] = useState(false)
+
+    // add book
+    function handleAddBook() {
+
+    }
+
+
     return (
         <Fragment>
-
             <header className="mb-8 lg:mb-10 mx-auto max-w-7xl">
 
                 <div
@@ -27,19 +38,19 @@ export default function Header() {
 
                 </div>
 
-                <div className="flex justify-end gap-5 my-5" >
-
-                    <button className=" bg-green-800 text-white hover:bg-green-900 px-3 py-1 rounded-md transition-all duration-300" >
-                        Add Book
-                    </button>
-
-                    <button className="bg-red-600 text-white hover:bg-red-700 px-3 py-1 rounded-md transition-all duration-300" >
-                        Delete All
-                    </button>
-
-                </div>
+                {/* add,delete all */}
+                <BooksAction onAddBook={handleAddBook} />
 
             </header>
+
+            {showAddBookModal && <AddBooksModal />}
+
+            <div
+                className="container mx-auto grid grid-cols-1 gap-8 max-w-7xl md:grid-cols-2 lg:grid-cols-3"
+            >
+                {/* books list  */}
+                <BooksList />
+            </div>
 
         </Fragment>
     )

@@ -1,10 +1,13 @@
-import { Fragment } from "react";
-import BooksGrid from "./components/BooksContainer/BooksGrid";
-import Header from "./components/Header/Header";
-import Navbar from "./components/Navbar";
+import { Fragment, useState } from "react";
+import BooksContainer from "./components/BooksContainer/BooksContainer";
 import Footer from "./components/Footer";
+import Navbar from "./components/Navbar";
+// import booksData from "../public/booksData.json"
 
 export default function App() {
+
+ 
+
   return (
     <Fragment>
 
@@ -14,8 +17,9 @@ export default function App() {
 
         <main className="my-10 lg:my-14">
 
-          <Header />
-          <BooksGrid />
+
+          <BooksContainer />
+
 
         </main >
 

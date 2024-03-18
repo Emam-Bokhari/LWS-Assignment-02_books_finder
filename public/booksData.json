@@ -1,0 +1,92 @@
+[
+    {
+      "id": 0,
+      "title": "Javascript and Jquery",
+      "author": "Jon Duckett",
+      "thumbnail": "https://i.ibb.co/P5gC5T2/book.png",
+      "price": 62,
+      "ratings": 4,
+      "publishedDate": 2022,
+      "isFavourite": false
+    },
+    {
+      "id": 1,
+      "title": "Python",
+      "author": "Eric Matthes",
+      "thumbnail": "https://i.ibb.co/P5gC5T2/book.png",
+      "price": 45,
+      "ratings": 3,
+      "publishedDate": 2021,
+      "isFavourite": true
+    },
+    {
+      "id": 2,
+      "title": "Java and Golang",
+      "author": "Paulo Coelho",
+      "thumbnail": "https://i.ibb.co/P5gC5T2/book.png",
+      "price": 30,
+      "ratings": 5,
+      "publishedDate": 2020,
+      "isFavourite": false
+    },
+    {
+      "id": 3,
+      "title": "Clean Code",
+      "author": "Robert C. Martin",
+      "thumbnail": "https://i.ibb.co/P5gC5T2/book.png",
+      "price": 55,
+      "ratings": 3,
+      "publishedDate": 2019,
+      "isFavourite": true
+    },
+    {
+      "id": 4,
+      "title": "C and C++",
+      "author": "Stuart Russell, Peter Norvig",
+      "thumbnail": "https://i.ibb.co/P5gC5T2/book.png",
+      "price": 75,
+      "ratings": 4,
+      "publishedDate": 2017,
+      "isFavourite": false
+    },
+    {
+      "id": 5,
+      "title": "Php and Laravel",
+      "author": "F. Scott Fitzgerald",
+      "thumbnail": "https://i.ibb.co/P5gC5T2/book.png",
+      "price": 20,
+      "ratings": 5,
+      "publishedDate": 2024,
+      "isFavourite": false
+    },
+    {
+      "id": 6,
+      "title": "Node Js Design Pattern",
+      "author": "J.D. Salinger",
+      "thumbnail": "https://i.ibb.co/P5gC5T2/book.png",
+      "price": 18,
+      "ratings": 4,
+      "publishedDate": 2022,
+      "isFavourite": false
+    },
+    {
+      "id": 7,
+      "title": "Data structure",
+      "author": "Daniel Kahneman",
+      "thumbnail": "https://i.ibb.co/P5gC5T2/book.png",
+      "price": 40,
+      "ratings": 5,
+      "publishedDate": 2023,
+      "isFavourite": false
+    },
+    {
+      "id": 8,
+      "title": "Algebra",
+      "author": "J.R.R. Tolkien",
+      "thumbnail": "https://i.ibb.co/P5gC5T2/book.png",
+      "price": 28,
+      "ratings": 5,
+      "publishedDate": 2024,
+      "isFavourite": true
+    }
+  ]
