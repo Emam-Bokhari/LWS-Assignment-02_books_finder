@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 
-export default function AddBooksModal() {
+export default function AddBooksModal({onCancel}) {
     return (
         <Fragment>
 
@@ -81,7 +81,8 @@ export default function AddBooksModal() {
                 {/* inputs ends  */}
                 <div className="mt-16 flex justify-center gap-20 lg:mt-20">
 
-                    <button
+                    <button 
+                    onClick={onCancel}
                         type="submit"
                         className="rounded bg-red-600 hover:bg-red-700 px-4 py-2 text-white transition-all hover:opacity-80"
                     >
