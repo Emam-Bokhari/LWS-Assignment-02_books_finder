@@ -1,15 +1,17 @@
 import { Fragment } from "react";
-import star from "../../assets/star.svg";
+import starIcon from "../../assets/star.svg";
 
-export default function BooksRatings() {
+export default function BooksRatings({ ratings }) {
+    console.log(ratings)
+    const stars = new Array(ratings).fill(starIcon)
+    console.log(stars)
     return (
         <Fragment>
             <div className="flex items-center space-x-1">
-                <img src={star} />
-                <img src={star} />
-                <img src={star} />
-                <img src={star} />
-                <span className="text-xs lg:text-sm">(4 Star)</span>
+                {stars.map((star,index)=>(
+                    <img key={index} src={star} />
+                ))}
+                <span className="text-xs lg:text-sm">({ratings} Star)</span>
             </div>
         </Fragment>
     )
