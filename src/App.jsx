@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import BooksGrid from "./components/BooksContainer/BooksGrid";
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 export default function App() {
   return (
@@ -15,8 +16,10 @@ export default function App() {
 
           <Header />
           <BooksGrid />
-          
+
         </main >
+
+        <Footer />
 
 
       </div>

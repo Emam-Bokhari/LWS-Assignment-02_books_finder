@@ -8,7 +8,7 @@ export default function BooksGrid() {
         <Fragment>
             
             <div
-                className="container mx-auto grid grid-cols-1 gap-8 max-w-7xl md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+                className="container mx-auto grid grid-cols-1 gap-8 max-w-7xl md:grid-cols-2 lg:grid-cols-3"
             >
                 {/* Book Item  */}
                 <div className="space-y-3">
