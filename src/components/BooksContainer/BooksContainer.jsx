@@ -39,8 +39,25 @@ export default function BooksContainer() {
 
     // delete a book
     function handleDeleteBook(bookId) {
-        const filtered = books.filter(book => book.id !== bookId)
-        setBooks(filtered)
+        const confirmed = window.confirm("Are You Sure You Want To Delete The Book ?")
+
+        if (confirmed) {
+            const filtered = books.filter(book => book.id !== bookId)
+            setBooks(filtered)
+        }
+    }
+
+    // delete all books
+    function handleDeleteAllBooks() {
+        const confirmed = window.confirm("Are You Sure You Want To Delete All Books ?")
+
+        if (confirmed) {
+            books.length = 0
+        }
+
+        setBooks([
+            ...books
+        ])
     }
 
     // favourite book
@@ -76,7 +93,9 @@ export default function BooksContainer() {
                 </div>
 
                 {/* add,delete all */}
-                <BooksAction onAddBook={() => setShowAddBookModal(true)} />
+                <BooksAction
+                    onDeleteAllBooks={handleDeleteAllBooks}
+                    onAddBook={() => setShowAddBookModal(true)} />
 
             </header>
 
