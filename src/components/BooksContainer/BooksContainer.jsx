@@ -60,6 +60,16 @@ export default function BooksContainer() {
         ])
     }
 
+    // search book by title
+    function handleSearchBook(searchBook) {
+        if (searchBook.trim() === "") {
+            setBooks(books)
+        } else {
+            const search = books.filter(book => book.title.toLowerCase().includes(searchBook.toLowerCase()))
+            setBooks(search)
+        }
+    }
+
     // favourite book
     function handleFavourite(bookId) {
         const index = books.findIndex(book => book.id === bookId)
@@ -85,7 +95,7 @@ export default function BooksContainer() {
                             Trending Books of the Year
                         </h2>
                         {/* Search Box  */}
-                        <Searchbox />
+                        <Searchbox onSearchBook={handleSearchBook} />
                     </div>
                     {/* sort - filter */}
                     <SortBooks />
