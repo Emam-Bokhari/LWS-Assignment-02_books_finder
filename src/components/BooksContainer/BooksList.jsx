@@ -3,21 +3,7 @@ import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { MdFavoriteBorder } from "react-icons/md";
 import BooksRatings from "./BooksRatings";
 
-export default function BooksList() {
-
-    const defaultBook = {
-        "id": crypto.randomUUID,
-        "thumbnail": "https://i.ibb.co/P5gC5T2/book.png",
-        "title": "JavaScript and Jquery",
-        "author": "By : Jon Duckett",
-        "price": 62,
-        "ratings": 4,
-        "isFavourite": false
-    }
-
-
-    const [books, setBooks] = useState([defaultBook])
-
+export default function BooksList({books}) {
 
     return (
         <Fragment>

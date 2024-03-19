@@ -1,6 +1,26 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 
-export default function AddBooksModal({onCancel}) {
+export default function AddBooksModal({ onCancel,onSaveBook }) {
+
+    const [book, setBook] = useState({
+        id: crypto.randomUUID(),
+        title: "",
+        author: "",
+        price: "",
+        ratings: "",
+        thumbnail: "",
+        isFavourite: false
+    })
+
+    function handleChange(event) {
+        const name=event.target.name 
+        let value=event.target.value 
+        setBook({
+            ...book,
+            [name]:value
+        })
+    }
+
     return (
         <Fragment>
 
@@ -23,16 +43,20 @@ export default function AddBooksModal({onCancel}) {
                         <div className="space-y-2 lg:space-y-3">
                             <label htmlFor="title">Title</label>
                             <input
+                                onChange={handleChange}
+                                value={book.title}
                                 className="block w-full rounded-md bg-[#F5F5F5] px-3 py-2.5"
                                 type="text"
                                 name="title"
                                 required
                             />
                         </div>
-                        {/* writer  */}
+                        {/* author  */}
                         <div className="space-y-2 lg:space-y-3">
                             <label htmlFor="author">Author</label>
                             <input
+                                onChange={handleChange}
+                                value={book.author}
                                 className="block w-full rounded-md bg-[#F5F5F5] px-3 py-2.5"
                                 type="text"
                                 name="author"
@@ -48,8 +72,10 @@ export default function AddBooksModal({onCancel}) {
                         <div className="space-y-2 lg:space-y-3">
                             <label htmlFor="ratings">Ratings</label>
                             <input
+                            onChange={handleChange}
+                            value={book.ratings}
                                 className="block w-full rounded-md bg-[#F5F5F5] px-3 py-2.5"
-                                type="number"
+                                type="text"
                                 name="ratings"
                                 required
                             />
@@ -58,8 +84,10 @@ export default function AddBooksModal({onCancel}) {
                         <div className="space-y-2 lg:space-y-3">
                             <label htmlFor="price">Price</label>
                             <input
+                            onChange={handleChange}
+                            value={book.price}
                                 className="block w-full rounded-md bg-[#F5F5F5] px-3 py-2.5"
-                                type="number"
+                                type="text"
                                 name="price"
                                 id="price"
                                 required
@@ -71,9 +99,11 @@ export default function AddBooksModal({onCancel}) {
                     <div className="space-y-2 lg:space-y-3">
                         <label htmlFor="thumbnails">Thumbnails</label>
                         <input
+                        onChange={handleChange}
+                        value={book.thumbnail}
                             className="block w-full rounded-md bg-[#F5F5F5] px-3 py-2.5"
                             type="text"
-                            name="thumbnails"
+                            name="thumbnail"
                             required
                         />
                     </div>
@@ -81,8 +111,8 @@ export default function AddBooksModal({onCancel}) {
                 {/* inputs ends  */}
                 <div className="mt-16 flex justify-center gap-20 lg:mt-20">
 
-                    <button 
-                    onClick={onCancel}
+                    <button
+                        onClick={onCancel}
                         type="submit"
                         className="rounded bg-red-600 hover:bg-red-700 px-4 py-2 text-white transition-all hover:opacity-80"
                     >
@@ -90,6 +120,7 @@ export default function AddBooksModal({onCancel}) {
                     </button>
 
                     <button
+                    onClick={()=>onSaveBook(book)}
                         type="submit"
                         className="rounded bg-green-600 hover:bg-green-700 px-4 py-2 text-white transition-all hover:opacity-80"
                     >
