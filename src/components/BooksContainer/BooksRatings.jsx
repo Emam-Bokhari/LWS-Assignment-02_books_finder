@@ -3,8 +3,10 @@ import starIcon from "../../assets/star.svg";
 
 export default function BooksRatings({ ratings }) {
 
-    const stars = new Array(ratings).fill(starIcon)
-    
+    const convert = Number(ratings)
+
+    const stars = new Array(convert).fill(starIcon)
+
     return (
         <Fragment>
             <div className="flex items-center space-x-1">

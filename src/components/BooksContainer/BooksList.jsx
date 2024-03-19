@@ -1,9 +1,10 @@
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { MdFavoriteBorder } from "react-icons/md";
 import BooksRatings from "./BooksRatings";
 
-export default function BooksList({books}) {
+export default function BooksList({ books, onDeleteBook }) {
+
 
     return (
         <Fragment>
@@ -37,6 +38,7 @@ export default function BooksList({books}) {
                             </button>
 
                             <button
+                                onClick={() => onDeleteBook(book.id)}
                                 className="flex min-w-[100px] items-center justify-center gap-1 rounded-md bg-red-600 hover:bg-red-700 py-1.5 text-white transition-all lg:py-1.5"
                             >
                                 <AiFillDelete className="text-sm" />

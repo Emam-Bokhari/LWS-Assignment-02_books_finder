@@ -8,7 +8,7 @@ import SortBooks from "./SortBooks.jsx";
 export default function BooksContainer() {
 
     const defaultBook = {
-        "id": crypto.randomUUID,
+        "id": crypto.randomUUID(),
         "title": "JavaScript and Jquery",
         "author": "By : Jon Duckett",
         "price": "62",
@@ -33,8 +33,14 @@ export default function BooksContainer() {
     }
 
     // cancel
-    function handleCancelBooksModal(){
+    function handleCancelBooksModal() {
         setShowAddBookModal(false)
+    }
+
+    // delete a book
+    function handleDeleteBook(bookId) {
+        const filtered = books.filter(book => book.id !== bookId)
+        setBooks(filtered)
     }
 
 
@@ -62,18 +68,20 @@ export default function BooksContainer() {
                 </div>
 
                 {/* add,delete all */}
-                <BooksAction onAddBook={()=>setShowAddBookModal(true)} />
+                <BooksAction onAddBook={() => setShowAddBookModal(true)} />
 
             </header>
 
             {showAddBookModal && <AddBooksModal onSaveBook={handleAddBook}
-            onCancel={handleCancelBooksModal} />}
+                onCancel={handleCancelBooksModal} />}
 
             <div
                 className="container mx-auto grid grid-cols-1 gap-8 max-w-7xl md:grid-cols-2 lg:grid-cols-3"
             >
                 {/* books list  */}
-                <BooksList books={books} />
+                <BooksList
+                    onDeleteBook={handleDeleteBook}
+                    books={books} />
             </div>
 
         </Fragment>
