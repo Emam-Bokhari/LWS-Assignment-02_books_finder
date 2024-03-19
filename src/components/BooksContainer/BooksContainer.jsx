@@ -22,14 +22,33 @@ export default function BooksContainer() {
 
     const [showAddBookModal, setShowAddBookModal] = useState(false)
 
+    const [booksToUpdate, setBooksToUpdate] = useState(null)
+
     // add book
-    function handleAddBook(newBook) {
-        console.log(newBook)
-        setBooks([
-            ...books,
-            newBook
-        ])
+    function handleAddBook(newBook, isAdd) {
+        if (isAdd) {
+            setBooks([
+                ...books,
+                newBook
+            ])
+        } else {
+            setBooks(
+                books.map((book) => {
+                    if (book.id === newBook.id) {
+                        return newBook
+                    }
+                    return book
+                })
+            )
+        }
+
         setShowAddBookModal(false)
+    }
+
+    // edit book
+    function handleEditBook(book) {
+        setBooksToUpdate(book)
+        setShowAddBookModal(true)
     }
 
     // cancel
@@ -80,6 +99,7 @@ export default function BooksContainer() {
 
     // sort by published date
     function handleSortByPublishedDate(sort) {
+
         if (sort === "name_asc") {
             const newBooks = [...books]
             const sortedBooks = newBooks.sort((a, b) => a.title.localeCompare(b.title))
@@ -131,7 +151,9 @@ export default function BooksContainer() {
 
             </header>
 
-            {showAddBookModal && <AddBooksModal onSaveBook={handleAddBook}
+            {showAddBookModal && <AddBooksModal
+                booksToUpdate={booksToUpdate}
+                onSaveBook={handleAddBook}
                 onCancel={handleCancelBooksModal} />}
 
             <div
@@ -139,6 +161,7 @@ export default function BooksContainer() {
             >
                 {/* books list  */}
                 <BooksList
+                    onEditBook={handleEditBook}
                     onFavourite={handleFavourite}
                     onDeleteBook={handleDeleteBook}
                     books={books} />

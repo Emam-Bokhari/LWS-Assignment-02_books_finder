@@ -4,7 +4,7 @@ import { MdFavoriteBorder } from "react-icons/md";
 import { MdFavorite } from "react-icons/md";
 import BooksRatings from "./BooksRatings";
 
-export default function BooksList({ books, onDeleteBook, onFavourite }) {
+export default function BooksList({ books, onDeleteBook, onFavourite, onEditBook }) {
 
 
     return (
@@ -40,7 +40,8 @@ export default function BooksList({ books, onDeleteBook, onFavourite }) {
                         {/* edit,delete,favourite */}
                         <div className="flex items-center gap-3 text-xs lg:text-sm">
 
-                            <button
+                            <button 
+                            onClick={()=>onEditBook(book)}
                                 className="flex min-w-[100px] items-center justify-center gap-1 rounded-md bg-[#1C4336] py-1.5 text-white transition-all hover:opacity-80 lg:py-1.5"
                             >
                                 <AiFillEdit className="text-sm" />

@@ -1,8 +1,8 @@
 import { Fragment, useState } from "react";
 
-export default function AddBooksModal({ onCancel, onSaveBook }) {
+export default function AddBooksModal({ onCancel, onSaveBook, booksToUpdate }) {
 
-    const [book, setBook] = useState({
+    const [book, setBook] = useState(booksToUpdate || {
         id: crypto.randomUUID(),
         title: "",
         author: "",
@@ -12,6 +12,8 @@ export default function AddBooksModal({ onCancel, onSaveBook }) {
         publishedDate: "",
         isFavourite: false
     })
+
+    const [isAdd, setIsAdd] = useState(Object.is(booksToUpdate, null))
 
     function handleChange(event) {
         const name = event.target.name
@@ -133,7 +135,7 @@ export default function AddBooksModal({ onCancel, onSaveBook }) {
                     </button>
 
                     <button
-                        onClick={() => onSaveBook(book)}
+                        onClick={() => onSaveBook(book,isAdd)}
                         type="submit"
                         className="rounded bg-green-600 hover:bg-green-700 px-4 py-2 text-white transition-all hover:opacity-80"
                     >
