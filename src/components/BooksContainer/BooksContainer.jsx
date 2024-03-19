@@ -14,9 +14,9 @@ export default function BooksContainer() {
         "price": "62",
         "ratings": "4",
         "thumbnail": "https://i.ibb.co/P5gC5T2/book.png",
+        "publishedDate": "2024",
         "isFavourite": false
     }
-
 
     const [books, setBooks] = useState([defaultBook])
 
@@ -78,6 +78,28 @@ export default function BooksContainer() {
         setBooks(newBook)
     }
 
+    // sort by published date
+    function handleSortByPublishedDate(sort) {
+        if (sort === "name_asc") {
+            const newBooks = [...books]
+            const sortedBooks = newBooks.sort((a, b) => a.title.localeCompare(b.title))
+            setBooks(sortedBooks)
+        } else if (sort === "name_desc") {
+            const newBooks = [...books]
+            const sortedBooks = newBooks.sort((a, b) => b.title.localeCompare(a.title))
+            setBooks(sortedBooks)
+        } else if (sort === "year_asc") {
+            const newBooks = [...books]
+            const sortedBooks = newBooks.sort((a, b) => new Date(a.publishedDate) - new Date(b.publishedDate))
+            setBooks(sortedBooks)
+        } else if (sort === "year_desc") {
+            const newBooks = [...books]
+            const sortedBooks = newBooks.sort((a, b) => new Date(b.publishedDate) - new Date(a.publishedDate))
+            setBooks(sortedBooks)
+        }
+
+    }
+
 
     return (
         <Fragment>
@@ -98,7 +120,7 @@ export default function BooksContainer() {
                         <Searchbox onSearchBook={handleSearchBook} />
                     </div>
                     {/* sort - filter */}
-                    <SortBooks />
+                    <SortBooks onSortBooks={handleSortByPublishedDate} />
 
                 </div>
 

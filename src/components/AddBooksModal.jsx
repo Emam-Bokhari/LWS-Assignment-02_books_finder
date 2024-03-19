@@ -1,6 +1,6 @@
 import { Fragment, useState } from "react";
 
-export default function AddBooksModal({ onCancel,onSaveBook }) {
+export default function AddBooksModal({ onCancel, onSaveBook }) {
 
     const [book, setBook] = useState({
         id: crypto.randomUUID(),
@@ -9,15 +9,16 @@ export default function AddBooksModal({ onCancel,onSaveBook }) {
         price: "",
         ratings: "",
         thumbnail: "",
+        publishedDate: "",
         isFavourite: false
     })
 
     function handleChange(event) {
-        const name=event.target.name 
-        let value=event.target.value 
+        const name = event.target.name
+        let value = event.target.value
         setBook({
             ...book,
-            [name]:value
+            [name]: value
         })
     }
 
@@ -72,8 +73,8 @@ export default function AddBooksModal({ onCancel,onSaveBook }) {
                         <div className="space-y-2 lg:space-y-3">
                             <label htmlFor="ratings">Ratings</label>
                             <input
-                            onChange={handleChange}
-                            value={book.ratings}
+                                onChange={handleChange}
+                                value={book.ratings}
                                 className="block w-full rounded-md bg-[#F5F5F5] px-3 py-2.5"
                                 type="text"
                                 name="ratings"
@@ -84,8 +85,8 @@ export default function AddBooksModal({ onCancel,onSaveBook }) {
                         <div className="space-y-2 lg:space-y-3">
                             <label htmlFor="price">Price</label>
                             <input
-                            onChange={handleChange}
-                            value={book.price}
+                                onChange={handleChange}
+                                value={book.price}
                                 className="block w-full rounded-md bg-[#F5F5F5] px-3 py-2.5"
                                 type="text"
                                 name="price"
@@ -95,12 +96,24 @@ export default function AddBooksModal({ onCancel,onSaveBook }) {
                         </div>
                     </div>
 
+                    <div className="space-y-2 lg:space-y-3">
+                        <label htmlFor="thumbnails">Published Date</label>
+                        <input
+                            onChange={handleChange}
+                            value={book.publishedDate}
+                            className="block w-1/2 rounded-md bg-[#F5F5F5] px-3 py-2.5"
+                            type="text"
+                            name="publishedDate"
+                            required
+                        />
+                    </div>
+
                     {/* thumbnails */}
                     <div className="space-y-2 lg:space-y-3">
                         <label htmlFor="thumbnails">Thumbnails</label>
                         <input
-                        onChange={handleChange}
-                        value={book.thumbnail}
+                            onChange={handleChange}
+                            value={book.thumbnail}
                             className="block w-full rounded-md bg-[#F5F5F5] px-3 py-2.5"
                             type="text"
                             name="thumbnail"
@@ -120,7 +133,7 @@ export default function AddBooksModal({ onCancel,onSaveBook }) {
                     </button>
 
                     <button
-                    onClick={()=>onSaveBook(book)}
+                        onClick={() => onSaveBook(book)}
                         type="submit"
                         className="rounded bg-green-600 hover:bg-green-700 px-4 py-2 text-white transition-all hover:opacity-80"
                     >
