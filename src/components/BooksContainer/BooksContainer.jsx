@@ -14,7 +14,7 @@ export default function BooksContainer() {
         "price": "62",
         "ratings": "4",
         "thumbnail": "https://i.ibb.co/P5gC5T2/book.png",
-        "isFavourite": true
+        "isFavourite": false
     }
 
 
@@ -41,6 +41,14 @@ export default function BooksContainer() {
     function handleDeleteBook(bookId) {
         const filtered = books.filter(book => book.id !== bookId)
         setBooks(filtered)
+    }
+
+    // favourite book
+    function handleFavourite(bookId) {
+        const index = books.findIndex(book => book.id === bookId)
+        const newBook = [...books]
+        newBook[index].isFavourite = !newBook[index].isFavourite
+        setBooks(newBook)
     }
 
 
@@ -80,6 +88,7 @@ export default function BooksContainer() {
             >
                 {/* books list  */}
                 <BooksList
+                    onFavourite={handleFavourite}
                     onDeleteBook={handleDeleteBook}
                     books={books} />
             </div>

@@ -1,9 +1,10 @@
 import { Fragment } from "react";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { MdFavoriteBorder } from "react-icons/md";
+import { MdFavorite } from "react-icons/md";
 import BooksRatings from "./BooksRatings";
 
-export default function BooksList({ books, onDeleteBook }) {
+export default function BooksList({ books, onDeleteBook, onFavourite }) {
 
 
     return (
@@ -47,9 +48,12 @@ export default function BooksList({ books, onDeleteBook }) {
                             </button>
 
                             <button
+                                onClick={() => onFavourite(book.id)}
                                 className="flex min-w-[100px] items-center justify-center gap-1 rounded-md bg-[#1C4336]/[14%] py-1.5 text-[#1C4336] transition-all hover:bg-[#1C4336]/[24%] lg:py-1.5"
                             >
-                                <MdFavoriteBorder className="text-lg" />
+                                {book.isFavourite ?<MdFavorite className="text-lg text-red-500"/>
+                                :
+                                <MdFavoriteBorder className="text-lg" />}
                                 Favourite
                             </button>
 
